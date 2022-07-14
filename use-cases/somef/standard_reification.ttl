@@ -1,0 +1,1384 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix em: <https://www.w3id.org/okn/o/em#> .
+@prefix emi: <https://www.w3id.org/okn/i/> .
+@prefix sd: <https://w3id.org/okn/o/sd#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix : <http://example.org/> .
+@base <http://example.org/> .
+
+:ls a rml:LogicalSource ;
+  rml:source "./data/somef/morph.json";
+  rml:referenceFormulation ql:JSONPath ;
+  rml:iterator "$" .
+
+:softTM a rr:TriplesMap ;
+  rml:source :ls ;
+  rml:subjectMap [
+    rr:template "https://www.w3id.org/okn/i/Software/{owner.excerpt}/{name.excerpt}" ;
+    rr:class sd:Software ;
+  ] .
+
+:sourceTM a rr:TriplesMap ;
+  rml:source :ls ;
+  rml:subjectMap [
+    rr:template "https://www.w3id.org/okn/i/SourceCode/{owner.excerpt}/{name.excerpt}" ;
+    rr:class sd:SourceCode ;
+  ] .
+
+:soft rr:template "https://www.w3id.org/okn/i/Software/{owner.excerpt}/{name.excerpt}" .
+
+:source rr:template "https://www.w3id.org/okn/i/SourceCode/{owner.excerpt}/{name.excerpt}" .
+
+:descriptionTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-description-{description.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:description ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "description.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "description.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "description.technique"]
+    ]
+.
+
+:citationTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-citation-{citation.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:citation ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "citation.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "citation.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "citation.technique"]
+    ]
+.
+
+:scriptFileTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-hasScriptFile-{hasScriptFile.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasSupportScriptLocation ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "hasScriptFile.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "hasScriptFile.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "hasScriptFile.technique"]
+    ]
+.
+
+:acksTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-acknowledgement-{acknowledgement.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasAcknowledgments ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "acknowledgement.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "acknowledgement.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "acknowledgement.technique"]
+    ]
+.
+
+:installationTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-installation-{installation.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasInstallationInstructions ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "installation.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "installation.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "installation.technique"]
+    ]
+.
+
+:executionCommandTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-run-{installation.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasExecutionCommand ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "run.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "run.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "run.technique"]
+    ]
+.
+
+:invocationCommandTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-invocation-{invocation.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasExecutionCommand ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "invocation.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "invocation.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "invocation.technique"]
+    ]
+.
+
+:hasUsageNotesTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-usage-{usage.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasUsageNotes ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "usage.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "usage.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "usage.technique"]
+    ]
+.
+
+:hasDownloadUrlTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-downloadUrl-{downloadUrl.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasDownloadUrl ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "downloadUrl.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "downloadUrl.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "downloadUrl.technique"]
+    ]
+.
+
+:softwareRequirementsTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-requirement-{requirement.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:softwareRequirements ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "requirement.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "requirement.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "requirement.technique"]
+    ]
+.
+
+:contactDetailsTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-contact-{contact.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:contactDetails ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "contact.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "contact.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "contact.technique"]
+    ]
+.
+
+:supportDetailsTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-support-{support.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:supportDetails ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "support.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "support.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "support.technique"]
+    ]
+.
+
+:nameTM rml:logicalSource :ls;
+    rml:subjectMap :soft;
+    rr:predicateObjectMap [
+        rr:predicate sd:name ;
+        rml:objectMap [
+            rml:reference "fullName.excerpt" ;
+            rr:termType rr:Literal
+        ]
+    ].
+
+:licenseTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-license-{license.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:license ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "license.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "license.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "license.technique"]
+    ]
+.
+
+:licenseFileTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-licenseFile-{licenseFile.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:license ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "licenseFile.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "licenseFile.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "licenseFile.technique"]
+    ]
+.
+
+:licenseTextTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-licenseText-{licenseText.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:licenseText ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "licenseText.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "licenseText.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "licenseText.technique"]
+    ]
+.
+
+:hasFAQTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-faq-{faq.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasFAQ ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "faq.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "faq.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "faq.technique"]
+    ]
+.
+
+:hasExecutableNotebookTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-executableExample-{executableExample.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasExecutableNotebook ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "executableExample.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "executableExample.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "executableExample.technique"]
+    ]
+.
+
+:hasExampleTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-hasExecutableNotebook-{hasExecutableNotebook.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasExample ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "hasExecutableNotebook.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "hasExecutableNotebook.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "hasExecutableNotebook.technique"]
+    ]
+.
+
+:hasCodeOfConductTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-codeOfConduct-{codeOfConduct.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasCodeOfConduct ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "codeOfConduct.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "codeOfConduct.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "codeOfConduct.technique"]
+    ]
+.
+
+:dateCreatedTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-dateCreated-{dateCreated.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:dateCreated ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "dateCreated.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "dateCreated.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "dateCreated.technique"]
+    ]
+.
+
+:dateModifiedTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-dateModified-{dateModified.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:dateModified ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "dateModified.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "dateModified.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "dateModified.technique"]
+    ]
+.
+
+:hasDocumentationTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-hasDocumentation-{hasDocumentation.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasDocumentation ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "hasDocumentation.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "hasDocumentation.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "hasDocumentation.technique"]
+    ]
+.
+
+
+:hasBuildFileTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-hasBuildFile-{hasBuildFile.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasBuildFile ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "hasBuildFile.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "hasBuildFile.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "hasBuildFile.technique"]
+    ]
+.
+
+
+:identifierTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-identifier-{identifier.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:identifier ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "identifier.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "identifier.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "identifier.technique"]
+    ]
+.
+
+:issueTrackerTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-issueTracker-{issueTracker.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:issueTracker ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "issueTracker.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "issueTracker.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "issueTracker.technique"]
+    ]
+.
+
+:hasLongNameTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-long_title-{long_title.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasLongName ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "long_title.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "long_title.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "long_title.technique"]
+    ]
+.
+
+
+:readmeTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-readmeUrl-{readmeUrl.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:readme ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "readmeUrl.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "readmeUrl.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "readmeUrl.technique"]
+    ]
+.
+
+
+:contributingGuidelinesTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-contributingGuidelines-{contributingGuidelines.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:contributingGuidelines ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "contributingGuidelines.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "contributingGuidelines.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "contributingGuidelines.technique"]
+    ]
+.
+
+:invocationTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-invocation-{invocation.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasExecutableInstructions ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "invocation.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "invocation.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "invocation.technique"]
+    ]
+.
+
+
+:invocation2TM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-run-{run.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasExecutableInstructions ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "run.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "run.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "run.technique"]
+    ]
+.
+
+
+:supportDetailsTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-support_channel-{support_channel.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:supportDetails ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "support_channel.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "support_channel.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "support_channel.technique"]
+    ]
+.
+
+:logoTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-logo-{logo.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:logo ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "logo.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "logo.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "logo.technique"]
+    ]
+.
+
+
+:hasDiagramTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-image-{image.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:hasDiagram ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "image.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "image.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "image.technique"]
+    ]
+.
+
+:ownerTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-owner-{owner.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:owner ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "owner.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "owner.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "owner.technique"]
+    ]
+.
+
+:ownerTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-owner-{owner.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:owner ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "owner.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "owner.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "owner.technique"]
+    ]
+.
+
+:ownerSubjectTM rml:logicalSource :ls;
+  rml:subjectMap [
+    rr:template "https://www.w3id.org/okn/i/Agent/{owner.excerpt}" ;
+  ];
+  rr:predicateObjectMap [
+      rr:predicate rdfs:label ;
+      rml:objectMap [
+          rml:reference "owner.excerpt" ;
+          rr:termType rr:Literal
+      ]
+  ].
+
+:sourceCodeRepositoryTM rml:logicalSource :ls;
+  rml:subjectMap :source;
+  rr:predicateObjectMap [
+      rr:predicate sd:codeRepository ;
+      rml:objectMap [
+          rml:reference "codeRepository.excerpt" ;
+          rr:datatype xsd:anyURI
+      ]
+  ].
+
+:linkSoftwareAndSourceTM rml:logicalSource :ls;
+  rml:subjectMap :soft;
+  rr:predicateObjectMap [
+      rr:predicate sd:hasSourceCode ;
+      rml:objectMap :source
+  ].
+
+
+:programmingLanguageTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-languages-{languages.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :source ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:programmingLanguage ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "languages.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "languages.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "languages.technique"]
+    ]
+.
+
+:keywordsTM a rr:TriplesMap ;
+    rml:logicalSource :ls ;
+    rml:subjectMap [
+        rr:template "{owner.excerpt}-{name.excerpt}-topics-{topics.technique}" ;
+        rr:termType rr:BlankNode ;
+        rr:class rdf:Statement ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:subject ;
+        rml:objectMap :soft ;
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:predicate ;
+        rml:objectMap [ rr:constant sd:keywords ; ]
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:object ;
+        rml:objectMap [
+            rml:reference "topics.excerpt" ;
+            rr:termType rr:Literal ]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:confidence ;
+      rml:objectMap [
+        rml:reference "topics.confidence"]
+    ];
+    rr:predicateObjectMap [
+      rr:predicate em:technique ;
+      rml:objectMap [
+        rml:reference "topics.technique"]
+    ]
+.
+
+:versionTM rml:logicalSource :ls ;
+  rml:subjectMap [
+    rr:template "https://www.w3id.org/okn/i/SoftwareVersion/{owner.excerpt}/{name.excerpt}/{releases.excerpt.tagName}" ;
+    rr:class sd:SoftwareVersion
+  ];
+  rr:predicateObjectMap [
+      rr:predicate sd:tag ;
+      rml:objectMap [
+          rml:reference "releases.excerpt.tagName" ;
+          rr:termType rr:Literal
+      ]
+  ];
+  rr:predicateObjectMap [
+      rr:predicate sd:name ;
+      rml:objectMap [
+          rml:reference "releases.excerpt.name" ;
+          rr:termType rr:Literal
+      ]
+  ];
+  rr:predicateObjectMap [
+      rr:predicate sd:author ;
+      rml:objectMap [
+          rr:template "https://www.w3id.org/okn/i/Agent/{releases.excerpt.authorName}"
+      ]
+  ];
+  rr:predicateObjectMap [
+      rr:predicate sd:description ;
+      rml:objectMap [
+      rml:reference "releases.excerpt.body" ;
+      rr:termType rr:Literal
+      ]
+  ];
+  rr:predicateObjectMap [
+      rr:predicate sd:dateCreated ;
+      rml:objectMap [
+      rml:reference "releases.excerpt.dateCreated" ;
+      rr:datatype xsd:dateTime
+      ]
+  ];
+  rr:predicateObjectMap [
+      rr:predicate sd:datePublished ;
+      rml:objectMap [
+      rml:reference "releases.excerpt.datePublished" ;
+      rr:datatype xsd:dateTime
+      ]
+  ];
+  rr:predicateObjectMap [
+      rr:predicate sd:hasDownloadURL ;
+      rml:objectMap [
+      rml:reference "releases.excerpt.zipballUrl" ;
+      rr:datatype xsd:anyURI
+      ]
+  ];
+  rr:predicateObjectMap [
+      rr:predicate sd:identifier ;
+      rml:objectMap [
+      rml:reference "releases.excerpt.url" ;
+      rr:datatype xsd:anyURI
+      ]
+  ].
+
+:releaseAuthorTM rml:logicalSource :ls;
+  rml:subjectMap [
+    rr:template "https://www.w3id.org/okn/i/Agent/{releases.excerpt.authorName}" ;
+  ];
+  rr:predicateObjectMap [
+      rr:predicate rdfs:label ;
+      rml:objectMap [
+          rml:reference "releases.excerpt.authorName" ;
+          rr:termType rr:Literal
+      ]
+  ].
+
+:hasVersionTM rml:logicalSource :ls;
+  rml:subjectMap :soft ;
+  rr:predicateObjectMap [
+      rr:predicate sd:hasVersion ;
+      rml:objectMap [
+        rr:template "https://www.w3id.org/okn/i/SoftwareVersion/{owner.excerpt}/{name.excerpt}/{releases.excerpt.tagName}"
+      ];
+  ].
