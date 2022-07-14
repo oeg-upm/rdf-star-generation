@@ -1,0 +1,24 @@
+PREFIX  xyz:  <http://sparql.xyz/facade-x/data/>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  fx:   <http://sparql.xyz/facade-x/ns/>
+PREFIX ex: <http://example.org/>
+
+CONSTRUCT
+  {
+    ?subject ex:p ?asserted_object .
+    << ?subject ex:p ?asserted_object >> ex:q ?object
+  }
+WHERE
+  { SERVICE <x-sparql-anything:location=./data.csv,csv.headers=true>
+      { 
+
+        ?s  xyz:c1 ?c1; 
+            xyz:c2 ?c2;
+            xyz:c3 ?c3;
+
+        bind(uri(concat(str(ex:),encode_for_uri(?c2))) as ?asserted_object)
+        bind (?c3 AS ?object)
+        bind(BNODE(?c1) as ?subject)
+
+      }
+  }
