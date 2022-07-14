@@ -4,7 +4,7 @@
 
 
 - TC001a - passed
-- TC001b -
+- TC001b - passed
 - TC002a -
 - TC002b -
 - TC003a -
