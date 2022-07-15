@@ -1,0 +1,53 @@
+PREFIX  xyz:  <http://sparql.xyz/facade-x/data/>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  fx:   <http://sparql.xyz/facade-x/ns/>
+PREFIX ex: <http://example.org/>
+
+CONSTRUCT
+  {
+     <<  << ?asserted_subject1 ex:p1 ?asserted_object1 >>
+        ex:q1
+        << ?asserted_subject2 ex:p2 ?asserted_object2 >>
+    >>
+    ex:q2
+    <<
+        << ?asserted_subject3 ex:p3 ?asserted_object3 >>
+        ex:q3
+        << ?asserted_subject4 ex:p4 ?asserted_object4 >>
+    >> .
+  }
+WHERE
+  { SERVICE <x-sparql-anything:location=./data1.csv,csv.headers=true>
+      { 
+
+        []  xyz:c1-1 ?c1; 
+            xyz:c1-2 ?c2;
+            xyz:c1-3 ?c3;
+            xyz:c1-4 ?c4;
+            xyz:c1-5 ?c5 .
+
+        bind(uri(concat(str(ex:),encode_for_uri(?c1))) as ?asserted_subject1)        
+        bind(uri(concat(str(ex:),encode_for_uri(?c2))) as ?asserted_object1) 
+        bind(uri(concat(str(ex:),encode_for_uri(?c3))) as ?asserted_subject2)        
+        bind(uri(concat(str(ex:),encode_for_uri(?c4))) as ?asserted_object2)       
+
+      }
+
+    SERVICE <x-sparql-anything:location=./data2.csv,csv.headers=true>
+      { 
+
+        []  xyz:c2-1 ?c6;
+            xyz:c2-2 ?c7;
+            xyz:c2-3 ?c8;
+            xyz:c2-4 ?c9;
+            xyz:c2-5 ?c5 .
+
+        
+        bind(uri(concat(str(ex:),encode_for_uri(?c6))) as ?asserted_subject3)        
+        bind(uri(concat(str(ex:),encode_for_uri(?c7))) as ?asserted_object3) 
+        bind(uri(concat(str(ex:),encode_for_uri(?c8))) as ?asserted_subject4)        
+        bind(uri(concat(str(ex:),encode_for_uri(?c9))) as ?asserted_object4)  
+ 
+
+      }
+  }
