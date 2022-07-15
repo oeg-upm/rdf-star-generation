@@ -13,8 +13,8 @@
 - TC004b - passed
 - TC005a - passed
 - TC005b - passed
-- TC006a -
-- TC006b -
+- TC006a - passed
+- TC006b - passed
 - TC007a -
 - TC007b -
 - TC008a -
