@@ -1,0 +1,57 @@
+PREFIX  xyz:  <http://sparql.xyz/facade-x/data/>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  fx:   <http://sparql.xyz/facade-x/ns/>
+PREFIX  ex: <http://example.org/>
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX  ex: <http://example/>
+PREFIX  sem: <http://semmeddb.com/>
+
+
+CONSTRUCT
+  {
+    ?subject_predication_id sem:subject ?subject_name_iri .
+    ?subject_predication_id sem:object ?object_name_iri .
+    << ?subject_name_iri sem:semanticType ?subject_semtype >> sem:score ?subject_score .
+    << ?object_name_iri sem:semanticType ?object_semtype >> sem:score ?object_score .
+    << ?subject_predication_id sem:subject ?subject_name_iri >> sem:timestamp ?curr_timestamp .
+    << ?subject_predication_id sem:object ?object_name_iri >> sem:timestamp ?curr_timestamp .
+    << ?entity_id_iri sem:semanticType ?entity_semtype >> sem:score ?entiy_score .
+  }
+WHERE
+  { SERVICE <x-sparql-anything:location=./predication.csv,csv.headers=true,csv.null-string=''>
+      { 
+
+        ?s  xyz:PREDICATION_ID  ?predication_id; 
+            xyz:SUBJECT_NAME    ?subject_name;
+            xyz:OBJECT_NAME     ?object_name;
+            xyz:SUBJECT_SEMTYPE ?subject_semtype;
+            xyz:OBJECT_SEMTYPE  ?object_semtype;
+
+        bind(uri(concat(str("http://semmeddb.com/predication/"),encode_for_uri(?predication_id))) as ?subject_predication_id)
+        bind(uri(concat(str("http://semmeddb.com/subject-predication/"),encode_for_uri(?subject_name))) as ?subject_name_iri)
+        bind(uri(concat(str("http://semmeddb.com/object-predication/"),encode_for_uri(?object_name))) as ?object_name_iri)
+
+      }
+
+    SERVICE <x-sparql-anything:location=./predication_aux.csv,csv.headers=true,csv.null-string=''>
+      { 
+
+        ?s  xyz:PREDICATION_ID  ?predication_id;
+            xyz:SUBJECT_SCORE   ?subject_score;
+            xyz:OBJECT_SCORE    ?object_score;  
+            xyz:CURR_TIMESTAMP  ?curr_timestamp;    
+
+      }
+    SERVICE <x-sparql-anything:location=./entity.csv,csv.headers=true,csv.null-string=''>
+      { 
+
+        ?s  xyz:ENTITY_ID       ?entity_id;
+            xyz:SEMTYPE         ?entity_semtype;
+            xyz:SCORE           ?entiy_score;
+
+        bind(uri(concat(str("http://semmeddb.com/entity/"),encode_for_uri(?entity_id))) as ?entity_id_iri)
+          
+
+      }
+  }
