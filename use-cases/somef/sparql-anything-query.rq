@@ -174,7 +174,7 @@
 
   }
   WHERE
-    { SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.owner>
+    { SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.owner>
         {
           []  xyz:excerpt ?owner ;
               xyz:confidence [ fx:anySlot ?owner_confidence ] ;
@@ -183,7 +183,7 @@
 
     BIND(uri(concat("https://www.w3id.org/okn/i/Agent/",?owner)) as ?owner_uri)
 
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.name>
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.name>
         {
           []  xyz:excerpt ?name .
         }
@@ -195,7 +195,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.citation>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.citation>
           {
             []  xyz:excerpt ?cit_excerpt ;
                 xyz:confidence [ fx:anySlot ?cit_confidence ] ;
@@ -205,7 +205,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.description>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.description>
           {
             []  xyz:excerpt ?desc_excerpt ;
                 xyz:confidence [ fx:anySlot ?desc_confidence ] ;
@@ -215,7 +215,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.acknowledgement>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.acknowledgement>
           {
             []  xyz:excerpt ?ack_excerpt ;
                 xyz:confidence [ fx:anySlot ?ack_confidence ] ;
@@ -225,7 +225,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.installation>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.installation>
           {
             []  xyz:excerpt ?install_excerpt ;
                 xyz:confidence [ fx:anySlot ?install_confidence ] ;
@@ -235,7 +235,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.run>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.run>
           {
             []  xyz:excerpt ?run_excerpt ;
                 xyz:confidence [ fx:anySlot ?run_confidence ] ;
@@ -245,7 +245,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.invocation>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.invocation>
           {
             []  xyz:excerpt ?invoc_excerpt ;
                 xyz:confidence [ fx:anySlot ?invoc_confidence ] ;
@@ -255,7 +255,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.usage>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.usage>
           {
             []  xyz:excerpt ?usage_excerpt ;
                 xyz:confidence [ fx:anySlot ?usage_confidence ] ;
@@ -265,7 +265,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.downloadUrl>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.downloadUrl>
           {
             []  xyz:excerpt ?downloadUrl_excerpt ;
                 xyz:confidence [ fx:anySlot ?downloadUrl_confidence ] ;
@@ -275,7 +275,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.requirement>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.requirement>
           {
             []  xyz:excerpt ?softReqs_excerpt ;
                 xyz:confidence [ fx:anySlot ?softReqs_confidence ] ;
@@ -285,7 +285,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.contact>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.contact>
           {
             []  xyz:excerpt ?contact_excerpt ;
                 xyz:confidence [ fx:anySlot ?contact_confidence ] ;
@@ -295,7 +295,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.support>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.support>
           {
             []  xyz:excerpt ?support_excerpt ;
                 xyz:confidence [ fx:anySlot ?support_confidence ] ;
@@ -305,7 +305,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.fullName>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.fullName>
           {
             []  xyz:excerpt ?fullname .
           }
@@ -313,7 +313,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.license>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.license>
           {
             []  xyz:excerpt ?license_excerpt ;
                 xyz:confidence [ fx:anySlot ?license_confidence ] ;
@@ -323,7 +323,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.licenseFile>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.licenseFile>
           {
             []  xyz:excerpt ?licenseFile_excerpt ;
                 xyz:confidence [ fx:anySlot ?licenseFile_confidence ] ;
@@ -333,7 +333,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.licenseText>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.licenseText>
           {
             []  xyz:excerpt ?licenseText_excerpt ;
                 xyz:confidence [ fx:anySlot ?licenseText_confidence ] ;
@@ -343,7 +343,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.faq>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.faq>
           {
             []  xyz:excerpt ?faq_excerpt ;
                 xyz:confidence [ fx:anySlot ?faq_confidence ] ;
@@ -353,7 +353,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.executableExample>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.executableExample>
           {
             []  xyz:excerpt ?execex_excerpt ;
                 xyz:confidence [ fx:anySlot ?execex_confidence ] ;
@@ -363,7 +363,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.executableNotebook>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.executableNotebook>
           {
             []  xyz:excerpt ?execnote_excerpt ;
                 xyz:confidence [ fx:anySlot ?execnote_confidence ] ;
@@ -373,7 +373,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.codeOfConduct>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.codeOfConduct>
           {
             []  xyz:excerpt ?codeConduct_excerpt ;
                 xyz:confidence [ fx:anySlot ?codeConduct_confidence ] ;
@@ -383,7 +383,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.dateCreated>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.dateCreated>
           {
             []  xyz:excerpt ?dateCreated_excerpt ;
                 xyz:confidence [ fx:anySlot ?dateCreated_confidence ] ;
@@ -393,7 +393,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.dateModified>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.dateModified>
           {
             []  xyz:excerpt ?dateModified_excerpt ;
                 xyz:confidence [ fx:anySlot ?dateModified_confidence ] ;
@@ -403,7 +403,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.hasDocumentation>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.hasDocumentation>
           {
             []  xyz:excerpt ?hasDocumentation_excerpt ;
                 xyz:confidence [ fx:anySlot ?hasDocumentation_confidence ] ;
@@ -413,7 +413,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.hasBuildFile>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.hasBuildFile>
           {
             []  xyz:excerpt ?hasBuildFile_excerpt ;
                 xyz:confidence [ fx:anySlot ?hasBuildFile_confidence ] ;
@@ -423,7 +423,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.identifier>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.identifier>
           {
             []  xyz:excerpt ?id_excerpt ;
                 xyz:confidence [ fx:anySlot ?id_confidence ] ;
@@ -433,7 +433,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.issueTracker>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.issueTracker>
           {
             []  xyz:excerpt ?issueTracker_excerpt ;
                 xyz:confidence [ fx:anySlot ?issueTracker_confidence ] ;
@@ -443,7 +443,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.long_title>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.long_title>
           {
             []  xyz:excerpt ?long_title_excerpt ;
                 xyz:confidence [ fx:anySlot ?long_title_confidence ] ;
@@ -453,7 +453,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.readmeUrl>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.readmeUrl>
           {
             []  xyz:excerpt ?readmeUrl_excerpt ;
                 xyz:confidence [ fx:anySlot ?readmeUrl_confidence ] ;
@@ -463,7 +463,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.contributingGuidelines>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.contributingGuidelines>
           {
             []  xyz:excerpt ?contrib_excerpt ;
                 xyz:confidence [ fx:anySlot ?contrib_confidence ] ;
@@ -473,7 +473,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.invocation>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.invocation>
           {
             []  xyz:excerpt ?invocation_excerpt ;
                 xyz:confidence [ fx:anySlot ?invocation_confidence ] ;
@@ -483,7 +483,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.support_channel>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.support_channel>
           {
             []  xyz:excerpt ?channel_excerpt ;
                 xyz:confidence [ fx:anySlot ?channel_confidence ] ;
@@ -493,7 +493,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.logo>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.logo>
           {
             []  xyz:excerpt ?logo_excerpt ;
                 xyz:confidence [ fx:anySlot ?logo_confidence ] ;
@@ -503,7 +503,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.image>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.image>
           {
             []  xyz:excerpt ?image_excerpt ;
                 xyz:confidence [ fx:anySlot ?image_confidence ] ;
@@ -513,7 +513,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.codeRepository>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.codeRepository>
           {
             []  xyz:excerpt ?code_repo .
           }
@@ -522,7 +522,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.languages>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.languages>
           {
             []  xyz:excerpt [ fx:anySlot ?languages_excerpt ] ;
                 xyz:confidence [ fx:anySlot ?languages_confidence ] ;
@@ -532,7 +532,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.topics>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.topics>
           {
             []  xyz:excerpt ?keywords_excerpt ;
                 xyz:confidence [ fx:anySlot ?keywords_confidence ] ;
@@ -542,7 +542,7 @@
 
     OPTIONAL
       {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_agora-docker.json,json.path=$.releases.excerpt>
+      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.releases.excerpt>
           {
             [] xyz:tagName ?rel_tagName ;
                xyz:name ?rel_name ;
