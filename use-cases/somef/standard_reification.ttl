@@ -457,7 +457,7 @@
     rr:predicateObjectMap [
         rr:predicate rdf:object ;
         rml:objectMap [
-            rml:reference "license.excerpt" ;
+            rml:reference "license.excerpt.url" ;
             rr:termType rr:Literal ]
     ];
     rr:predicateObjectMap [
@@ -873,7 +873,7 @@
 :hasLongNameTM a rr:TriplesMap ;
     rml:logicalSource :ls ;
     rml:subjectMap [
-        rr:template "{owner.excerpt}-{name.excerpt}-long_title-{long_title.technique}" ;
+        rr:template "{owner.excerpt}-{name.excerpt}-longTitle-{longTitle.technique}" ;
         rr:termType rr:BlankNode ;
         rr:class rdf:Statement ;
     ];
@@ -888,18 +888,18 @@
     rr:predicateObjectMap [
         rr:predicate rdf:object ;
         rml:objectMap [
-            rml:reference "long_title.excerpt" ;
+            rml:reference "longTitle.excerpt" ;
             rr:termType rr:Literal ]
     ];
     rr:predicateObjectMap [
       rr:predicate em:confidence ;
       rml:objectMap [
-        rml:reference "long_title.confidence"]
+        rml:reference "longTitle.confidence"]
     ];
     rr:predicateObjectMap [
       rr:predicate em:technique ;
       rml:objectMap [
-        rml:reference "long_title.technique"]
+        rml:reference "longTitle.technique"]
     ]
 .
 

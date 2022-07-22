@@ -1,563 +1,562 @@
+PREFIX  xyz:  <http://sparql.xyz/facade-x/data/>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  fx:   <http://sparql.xyz/facade-x/ns/>
+PREFIX  ex:   <http://example.org/>
+PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  sd:   <https://w3id.org/okn/o/sd#>
+PREFIX  em:   <https://www.w3id.org/okn/o/em#>
+PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+CONSTRUCT {
+    ?owner_uri rdfs:label ?owner .
 
-  PREFIX  xyz:  <http://sparql.xyz/facade-x/data/>
-  PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
-  PREFIX  fx:   <http://sparql.xyz/facade-x/ns/>
-  PREFIX  ex:   <http://example.org/>
-  PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
-  PREFIX  sd:   <https://w3id.org/okn/o/sd#>
-  PREFIX  em:   <https://www.w3id.org/okn/o/em#>
-  PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-  CONSTRUCT {
-      ?owner_uri rdfs:label ?owner .
+    ?rel_subject a sd:SoftwareVersion ;
+        sd:tag ?rel_tagName ;
+        sd:name ?rel_name ;
+        sd:author ?rel_authorName_uri ;
+        sd:description ?rel_body ;
+        sd:dateCreated ?rel_dateCreated ;
+        sd:datePublished ?rel_datePublised ;
+        sd:hasDownloadURL ?rel_zipballUrl ;
+        sd:identifier ?rel_url .
 
-      ?rel_subject a sd:SoftwareVersion ;
-          sd:tag ?rel_tagName ;
-          sd:name ?rel_name ;
-          sd:author ?rel_authorName_uri ;
-          sd:description ?rel_body ;
-          sd:dateCreated ?rel_dateCreated ;
-          sd:datePublished ?rel_datePublised ;
-          sd:hasDownloadURL ?rel_zipballUrl ;
-          sd:identifier ?rel_url .
+    ?rel_authorName_uri rdfs:label ?rel_authorName .
 
-      ?rel_authorName_uri rdfs:label ?rel_authorName .
+    ?source_subject a sd:SourceCode ;
+        sd:codeRepository ?code_repo_uri ;
+        sd:programmingLanguage ?languages_excerpt .
 
-      ?source_subject a sd:SourceCode ;
-          sd:codeRepository ?code_repo_uri ;
-          sd:programmingLanguage ?languages_excerpt .
+    ?subject a sd:Software ;
+        sd:description ?desc_excerpt ;
+        sd:citation ?cit_excerpt ;
+        sd:hasAcknowledgments ?ack_excerpt ;
+        sd:hasInstallationInstructions ?install_excerpt ;
+        sd:hasExecutionCommand ?run_excerpt ;
+        sd:hasExecutionCommand ?invoc_excerpt ;
+        sd:hasUsageNotes ?usage_excerpt ;
+        sd:hasDownloadUrl ?downloadUrl_excerpt ;
+        sd:softwareRequirements ?softReqs_excerpt ;
+        sd:contactDetails ?contact_excerpt ;
+        sd:supportDetails ?support_excerpt ;
+        sd:name ?fullname ;
+        sd:license ?license_excerpt ;
+        sd:license ?licenseFile_excerpt ;
+        sd:licenseText ?licenseText_excerpt ;
+        sd:hasFAQ ?faq_excerpt ;
+        sd:hasExecutableNotebook ?execnote_excerpt ;
+        sd:hasExecutableExample ?execex_excerpt ;
+        sd:hasCodeOfConduct ?codeConduct_excerpt ;
+        sd:dateCreated ?dateCreated_excerpt ;
+        sd:dateModified ?dateModified_excerpt ;
+        sd:hasDocumentation ?hasDocumentation_excerpt ;
+        sd:hasBuildFile ?hasBuildFile_excerpt ;
+        sd:identifier ?id_excerpt ;
+        sd:issueTracker ?issueTracker_excerpt ;
+        sd:hasLongName ?long_title_excerpt ;
+        sd:readme ?readmeUrl_excerpt ;
+        sd:contributingGuidelines ?contrib_excerpt ;
+        sd:hasExecutableInstructions ?invocation_excerpt ;
+        sd:hasExecutableInstructions ?run_excerpt ;
+        sd:supportDetails ?channel_excerpt ;
+        sd:logo ?logo_excerpt ;
+        sd:hasDiagram ?image_excerpt ;
+        sd:owner ?owner_uri ;
+        sd:hasSourceCode ?source_subject ;
+        sd:keywords ?keywords_excerpt ;
+        sd:hasVersion ?rel_subject .
 
-      ?subject a sd:Software ;
-          sd:description ?desc_excerpt ;
-          sd:citation ?cit_excerpt ;
-          sd:hasAcknowledgments ?ack_excerpt ;
-          sd:hasInstallationInstructions ?install_excerpt ;
-          sd:hasExecutionCommand ?run_excerpt ;
-          sd:hasExecutionCommand ?invoc_excerpt ;
-          sd:hasUsageNotes ?usage_excerpt ;
-          sd:hasDownloadUrl ?downloadUrl_excerpt ;
-          sd:softwareRequirements ?softReqs_excerpt ;
-          sd:contactDetails ?contact_excerpt ;
-          sd:supportDetails ?support_excerpt ;
-          sd:name ?fullname ;
-          sd:license ?license_excerpt ;
-          sd:license ?licenseFile_excerpt ;
-          sd:licenseText ?licenseText_excerpt ;
-          sd:hasFAQ ?faq_excerpt ;
-          sd:hasExecutableNotebook ?execnote_excerpt ;
-          sd:hasExecutableExample ?execex_excerpt ;
-          sd:hasCodeOfConduct ?codeConduct_excerpt ;
-          sd:dateCreated ?dateCreated_excerpt ;
-          sd:dateModified ?dateModified_excerpt ;
-          sd:hasDocumentation ?hasDocumentation_excerpt ;
-          sd:hasBuildFile ?hasBuildFile_excerpt ;
-          sd:identifier ?id_excerpt ;
-          sd:issueTracker ?issueTracker_excerpt ;
-          sd:hasLongName ?long_title_excerpt ;
-          sd:readme ?readmeUrl_excerpt ;
-          sd:contributingGuidelines ?contrib_excerpt ;
-          sd:hasExecutableInstructions ?invocation_excerpt ;
-          sd:hasExecutableInstructions ?run_excerpt ;
-          sd:supportDetails ?channel_excerpt ;
-          sd:logo ?logo_excerpt ;
-          sd:hasDiagram ?image_excerpt ;
-          sd:owner ?owner_uri ;
-          sd:hasSourceCode ?source_subject ;
-          sd:keywords ?keywords_excerpt ;
-          sd:hasVersion ?rel_subject .
+    << ?subject sd:description ?desc_excerpt >> em:technique ?desc_technique ;
+        em:confidence ?desc_confidence .
 
-      << ?subject sd:description ?desc_excerpt >> em:technique ?desc_technique ;
-          em:confidence ?desc_confidence .
+    << ?subject sd:citation ?cit_excerpt >> em:technique ?cit_technique ;
+        em:confidence ?cit_confidence .
 
-      << ?subject sd:citation ?cit_excerpt >> em:technique ?cit_technique ;
-          em:confidence ?cit_confidence .
+    << ?subject sd:hasAcknowledgments ?ack_excerpt >> em:technique ?ack_technique ;
+        em:confidence ?ack_confidence .
 
-      << ?subject sd:hasAcknowledgments ?ack_excerpt >> em:technique ?ack_technique ;
-          em:confidence ?ack_confidence .
+    << ?subject sd:hasInstallationInstructions ?install_excerpt >> em:technique ?install_technique ;
+        em:confidence ?install_confidence .
 
-      << ?subject sd:hasInstallationInstructions ?install_excerpt >> em:technique ?install_technique ;
-          em:confidence ?install_confidence .
+    << ?subject sd:hasExecutionCommand ?run_excerpt >> em:technique ?run_technique ;
+        em:confidence ?run_confidence .
 
-      << ?subject sd:hasExecutionCommand ?run_excerpt >> em:technique ?run_technique ;
-          em:confidence ?run_confidence .
+    << ?subject sd:hasExecutionCommand ?invoc_excerpt >> em:technique ?invoc_technique ;
+        em:confidence ?invoc_confidence .
 
-      << ?subject sd:hasExecutionCommand ?invoc_excerpt >> em:technique ?invoc_technique ;
-          em:confidence ?invoc_confidence .
+    << ?subject sd:hasUsageNotes ?usage_excerpt >> em:technique ?usage_technique ;
+        em:confidence ?usage_confidence .
 
-      << ?subject sd:hasUsageNotes ?usage_excerpt >> em:technique ?usage_technique ;
-          em:confidence ?usage_confidence .
+    << ?subject sd:hasDownloadUrl ?downloadUrl_excerpt >> em:technique ?downloadUrl_technique ;
+        em:confidence ?downloadUrl_confidence .
 
-      << ?subject sd:hasDownloadUrl ?downloadUrl_excerpt >> em:technique ?downloadUrl_technique ;
-          em:confidence ?downloadUrl_confidence .
+    << ?subject sd:softwareRequirements ?softReqs_excerpt >> em:technique ?softReqs_technique ;
+        em:confidence ?softReqs_confidence .
 
-      << ?subject sd:softwareRequirements ?softReqs_excerpt >> em:technique ?softReqs_technique ;
-          em:confidence ?softReqs_confidence .
+    << ?subject sd:contactDetails ?contact_excerpt >> em:technique ?contact_technique ;
+        em:confidence ?contact_confidence .
 
-      << ?subject sd:contactDetails ?contact_excerpt >> em:technique ?contact_technique ;
-          em:confidence ?contact_confidence .
+    << ?subject sd:supportDetails ?support_excerpt >> em:technique ?support_technique ;
+        em:confidence ?support_confidence .
 
-      << ?subject sd:supportDetails ?support_excerpt >> em:technique ?support_technique ;
-          em:confidence ?support_confidence .
+    << ?subject sd:license ?license_excerpt >> em:technique ?license_technique ;
+        em:confidence ?license_confidence .
 
-      << ?subject sd:license ?license_excerpt >> em:technique ?license_technique ;
-          em:confidence ?license_confidence .
+    << ?subject sd:license ?licenseFile_excerpt >> em:technique ?licenseFile_technique ;
+        em:confidence ?licenseFile_confidence .
 
-      << ?subject sd:license ?licenseFile_excerpt >> em:technique ?licenseFile_technique ;
-          em:confidence ?licenseFile_confidence .
+    << ?subject sd:licenseText ?licenseText_excerpt >> em:technique ?licenseText_technique ;
+        em:confidence ?licenseText_confidence .
 
-      << ?subject sd:licenseText ?licenseText_excerpt >> em:technique ?licenseText_technique ;
-          em:confidence ?licenseText_confidence .
+    << ?subject sd:hasFAQ ?faq_excerpt >> em:technique ?faq_technique ;
+        em:confidence ?faq_confidence .
 
-      << ?subject sd:hasFAQ ?faq_excerpt >> em:technique ?faq_technique ;
-          em:confidence ?faq_confidence .
+    << ?subject sd:hasExecutableExample ?execex_excerpt >> em:technique ?execex_technique ;
+        em:confidence ?execex_confidence .
 
-      << ?subject sd:hasExecutableExample ?execex_excerpt >> em:technique ?execex_technique ;
-          em:confidence ?execex_confidence .
+    << ?subject sd:hasExecutableNotebook ?execnote_excerpt >> em:technique ?execnote_technique ;
+        em:confidence ?execnote_confidence .
 
-      << ?subject sd:hasExecutableNotebook ?execnote_excerpt >> em:technique ?execnote_technique ;
-          em:confidence ?execnote_confidence .
+    << ?subject sd:hasCodeOfConduct ?codeConduct_excerpt >> em:technique ?codeConduct_technique ;
+        em:confidence ?codeConduct_confidence .
 
-      << ?subject sd:hasCodeOfConduct ?codeConduct_excerpt >> em:technique ?codeConduct_technique ;
-          em:confidence ?codeConduct_confidence .
+    << ?subject sd:dateCreated ?dateCreated_excerpt >> em:technique ?dateCreated_technique ;
+        em:confidence ?dateCreated_confidence .
 
-      << ?subject sd:dateCreated ?dateCreated_excerpt >> em:technique ?dateCreated_technique ;
-          em:confidence ?dateCreated_confidence .
+    << ?subject sd:dateModified ?dateModified_excerpt >> em:technique ?dateModified_technique ;
+        em:confidence ?dateModified_confidence .
 
-      << ?subject sd:dateModified ?dateModified_excerpt >> em:technique ?dateModified_technique ;
-          em:confidence ?dateModified_confidence .
+    << ?subject sd:hasDocumentation ?hasDocumentation_excerpt >> em:technique ?hasDocumentation_technique ;
+        em:confidence ?hasDocumentation_confidence .
 
-      << ?subject sd:hasDocumentation ?hasDocumentation_excerpt >> em:technique ?hasDocumentation_technique ;
-          em:confidence ?hasDocumentation_confidence .
+    << ?subject sd:hasBuildFile ?hasBuildFile_excerpt >> em:technique ?hasBuildFile_technique ;
+        em:confidence ?hasBuildFile_confidence .
 
-      << ?subject sd:hasBuildFile ?hasBuildFile_excerpt >> em:technique ?hasBuildFile_technique ;
-          em:confidence ?hasBuildFile_confidence .
+    << ?subject sd:identifier ?id_excerpt >> em:technique ?id_technique ;
+        em:confidence ?id_confidence .
 
-      << ?subject sd:identifier ?id_excerpt >> em:technique ?id_technique ;
-          em:confidence ?id_confidence .
+    << ?subject sd:issueTracker ?issueTracker_excerpt >> em:technique ?issueTracker_technique ;
+        em:confidence ?issueTracker_confidence .
 
-      << ?subject sd:issueTracker ?issueTracker_excerpt >> em:technique ?issueTracker_technique ;
-          em:confidence ?issueTracker_confidence .
+    << ?subject sd:hasLongName ?long_title_excerpt >> em:technique ?long_title_technique ;
+        em:confidence ?long_title_confidence .
 
-      << ?subject sd:hasLongName ?long_title_excerpt >> em:technique ?long_title_technique ;
-          em:confidence ?long_title_confidence .
+    << ?subject sd:readme ?readmeUrl_excerpt >> em:technique ?readmeUrl_technique ;
+        em:confidence ?readmeUrl_confidence .
 
-      << ?subject sd:readme ?readmeUrl_excerpt >> em:technique ?readmeUrl_technique ;
-          em:confidence ?readmeUrl_confidence .
+    << ?subject sd:contributingGuidelines ?contrib_excerpt >> em:technique ?contrib_technique ;
+        em:confidence ?contrib_confidence .
 
-      << ?subject sd:contributingGuidelines ?contrib_excerpt >> em:technique ?contrib_technique ;
-          em:confidence ?contrib_confidence .
+    << ?subject sd:hasExecutableInstructions ?invocation_excerpt >> em:technique ?invocation_technique ;
+        em:confidence ?invocation_confidence .
 
-      << ?subject sd:hasExecutableInstructions ?invocation_excerpt >> em:technique ?invocation_technique ;
-          em:confidence ?invocation_confidence .
+    << ?subject sd:hasExecutableInstructions ?run_excerpt >> em:technique ?run_technique ;
+        em:confidence ?run_confidence .
 
-      << ?subject sd:hasExecutableInstructions ?run_excerpt >> em:technique ?run_technique ;
-          em:confidence ?run_confidence .
+    << ?subject sd:supportDetails ?channel_excerpt >> em:technique ?channel_technique ;
+        em:confidence ?channel_confidence .
 
-      << ?subject sd:supportDetails ?channel_excerpt >> em:technique ?channel_technique ;
-          em:confidence ?channel_confidence .
+    << ?subject sd:logo ?logo_excerpt >> em:technique ?logo_technique ;
+        em:confidence ?logo_confidence .
 
-      << ?subject sd:logo ?logo_excerpt >> em:technique ?logo_technique ;
-          em:confidence ?logo_confidence .
+    << ?subject sd:hasDiagram ?image_excerpt >> em:technique ?image_technique ;
+        em:confidence ?image_confidence .
 
-      << ?subject sd:hasDiagram ?image_excerpt >> em:technique ?image_technique ;
-          em:confidence ?image_confidence .
+    << ?subject sd:owner ?owner_uri >> em:technique ?owner_technique ;
+        em:confidence ?owner_confidence .
 
-      << ?subject sd:owner ?owner_uri >> em:technique ?owner_technique ;
-          em:confidence ?owner_confidence .
+    << ?source_subject sd:programmingLanguage ?languages_excerpt >> em:technique ?languages_technique ;
+        em:confidence ?languages_confidence .
 
-      << ?source_subject sd:programmingLanguage ?languages_excerpt >> em:technique ?languages_technique ;
-          em:confidence ?languages_confidence .
+    << ?subject sd:keywords ?keywords_excerpt >> em:technique ?keywords_technique ;
+        em:confidence ?keywords_confidence .
 
-      << ?subject sd:keywords ?keywords_excerpt >> em:technique ?keywords_technique ;
-          em:confidence ?keywords_confidence .
 
+
+}
+WHERE
+  { SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.owner>
+      {
+        []  xyz:excerpt ?owner ;
+            xyz:confidence [ fx:anySlot ?owner_confidence ] ;
+            xyz:technique ?owner_technique .
+      }
+
+  BIND(uri(concat("https://www.w3id.org/okn/i/Agent/",?owner)) as ?owner_uri)
+
+  SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.name>
+      {
+        []  xyz:excerpt ?name .
+      }
+
+  BIND(uri(concat("https://www.w3id.org/okn/i/Software/",encode_for_uri(?owner),"/",encode_for_uri(?name))) as ?subject)
+
+  BIND(uri(concat("https://www.w3id.org/okn/i/SourceCode/",encode_for_uri(?owner),"/",encode_for_uri(?name))) as ?source_subject)
+
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.citation>
+        {
+          []  xyz:excerpt ?cit_excerpt ;
+              xyz:confidence [ fx:anySlot ?cit_confidence ] ;
+              xyz:technique ?cit_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.description>
+        {
+          []  xyz:excerpt ?desc_excerpt ;
+              xyz:confidence [ fx:anySlot ?desc_confidence ] ;
+              xyz:technique ?desc_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.acknowledgement>
+        {
+          []  xyz:excerpt ?ack_excerpt ;
+              xyz:confidence [ fx:anySlot ?ack_confidence ] ;
+              xyz:technique ?ack_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.installation>
+        {
+          []  xyz:excerpt ?install_excerpt ;
+              xyz:confidence [ fx:anySlot ?install_confidence ] ;
+              xyz:technique ?install_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.run>
+        {
+          []  xyz:excerpt ?run_excerpt ;
+              xyz:confidence [ fx:anySlot ?run_confidence ] ;
+              xyz:technique ?run_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.invocation>
+        {
+          []  xyz:excerpt ?invoc_excerpt ;
+              xyz:confidence [ fx:anySlot ?invoc_confidence ] ;
+              xyz:technique ?invoc_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.usage>
+        {
+          []  xyz:excerpt ?usage_excerpt ;
+              xyz:confidence [ fx:anySlot ?usage_confidence ] ;
+              xyz:technique ?usage_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.downloadUrl>
+        {
+          []  xyz:excerpt ?downloadUrl_excerpt ;
+              xyz:confidence [ fx:anySlot ?downloadUrl_confidence ] ;
+              xyz:technique ?downloadUrl_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.requirement>
+        {
+          []  xyz:excerpt ?softReqs_excerpt ;
+              xyz:confidence [ fx:anySlot ?softReqs_confidence ] ;
+              xyz:technique ?softReqs_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.contact>
+        {
+          []  xyz:excerpt ?contact_excerpt ;
+              xyz:confidence [ fx:anySlot ?contact_confidence ] ;
+              xyz:technique ?contact_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.support>
+        {
+          []  xyz:excerpt ?support_excerpt ;
+              xyz:confidence [ fx:anySlot ?support_confidence ] ;
+              xyz:technique ?support_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.fullName>
+        {
+          []  xyz:excerpt ?fullname .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.license>
+        {
+          []  xyz:excerpt [ xyz:url ?license_excerpt ] ;
+              xyz:confidence [ fx:anySlot ?license_confidence ] ;
+              xyz:technique ?license_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.licenseFile>
+        {
+          []  xyz:excerpt ?licenseFile_excerpt ;
+              xyz:confidence [ fx:anySlot ?licenseFile_confidence ] ;
+              xyz:technique ?licenseFile_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.licenseText>
+        {
+          []  xyz:excerpt ?licenseText_excerpt ;
+              xyz:confidence [ fx:anySlot ?licenseText_confidence ] ;
+              xyz:technique ?licenseText_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.faq>
+        {
+          []  xyz:excerpt ?faq_excerpt ;
+              xyz:confidence [ fx:anySlot ?faq_confidence ] ;
+              xyz:technique ?faq_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.executableExample>
+        {
+          []  xyz:excerpt ?execex_excerpt ;
+              xyz:confidence [ fx:anySlot ?execex_confidence ] ;
+              xyz:technique ?execex_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.executableNotebook>
+        {
+          []  xyz:excerpt ?execnote_excerpt ;
+              xyz:confidence [ fx:anySlot ?execnote_confidence ] ;
+              xyz:technique ?execnote_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.codeOfConduct>
+        {
+          []  xyz:excerpt ?codeConduct_excerpt ;
+              xyz:confidence [ fx:anySlot ?codeConduct_confidence ] ;
+              xyz:technique ?codeConduct_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.dateCreated>
+        {
+          []  xyz:excerpt ?dateCreated_excerpt ;
+              xyz:confidence [ fx:anySlot ?dateCreated_confidence ] ;
+              xyz:technique ?dateCreated_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.dateModified>
+        {
+          []  xyz:excerpt ?dateModified_excerpt ;
+              xyz:confidence [ fx:anySlot ?dateModified_confidence ] ;
+              xyz:technique ?dateModified_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.hasDocumentation>
+        {
+          []  xyz:excerpt [ fx:anySlot ?hasDocumentation_excerpt ] ;
+              xyz:confidence [ fx:anySlot ?hasDocumentation_confidence ] ;
+              xyz:technique ?hasDocumentation_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.hasBuildFile>
+        {
+          []  xyz:excerpt [ fx:anySlot ?hasBuildFile_excerpt ] ;
+              xyz:confidence [ fx:anySlot ?hasBuildFile_confidence ] ;
+              xyz:technique ?hasBuildFile_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.identifier>
+        {
+          []  xyz:excerpt ?id_excerpt ;
+              xyz:confidence [ fx:anySlot ?id_confidence ] ;
+              xyz:technique ?id_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.issueTracker>
+        {
+          []  xyz:excerpt ?issueTracker_excerpt ;
+              xyz:confidence [ fx:anySlot ?issueTracker_confidence ] ;
+              xyz:technique ?issueTracker_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.longTitle>
+        {
+          []  xyz:excerpt ?long_title_excerpt ;
+              xyz:confidence [ fx:anySlot ?long_title_confidence ] ;
+              xyz:technique ?long_title_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.readmeUrl>
+        {
+          []  xyz:excerpt ?readmeUrl_excerpt ;
+              xyz:confidence [ fx:anySlot ?readmeUrl_confidence ] ;
+              xyz:technique ?readmeUrl_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.contributingGuidelines>
+        {
+          []  xyz:excerpt ?contrib_excerpt ;
+              xyz:confidence [ fx:anySlot ?contrib_confidence ] ;
+              xyz:technique ?contrib_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.invocation>
+        {
+          []  xyz:excerpt ?invocation_excerpt ;
+              xyz:confidence [ fx:anySlot ?invocation_confidence ] ;
+              xyz:technique ?invocation_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.support_channel>
+        {
+          []  xyz:excerpt ?channel_excerpt ;
+              xyz:confidence [ fx:anySlot ?channel_confidence ] ;
+              xyz:technique ?channel_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.logo>
+        {
+          []  xyz:excerpt ?logo_excerpt ;
+              xyz:confidence [ fx:anySlot ?logo_confidence ] ;
+              xyz:technique ?logo_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.image>
+        {
+          []  xyz:excerpt ?image_excerpt ;
+              xyz:confidence [ fx:anySlot ?image_confidence ] ;
+              xyz:technique ?image_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.codeRepository>
+        {
+          []  xyz:excerpt ?code_repo .
+        }
+    }
+  BIND(uri(?code_repo) as ?code_repo_uri)
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.languages>
+        {
+          []  xyz:excerpt [ fx:anySlot ?languages_excerpt ] ;
+              xyz:confidence [ fx:anySlot ?languages_confidence ] ;
+              xyz:technique ?languages_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.topics>
+        {
+          []  xyz:excerpt [ fx:anySlot ?keywords_excerpt ] ;
+              xyz:confidence [ fx:anySlot ?keywords_confidence ] ;
+              xyz:technique ?keywords_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.releases.excerpt>
+        {
+          [] xyz:tagName ?rel_tagName ;
+             xyz:name ?rel_name ;
+             xyz:authorName ?rel_authorName ;
+             xyz:body ?rel_body ;
+             xyz:dateCreated ?rel_dateCreated ;
+             xyz:datePublishec ?rel_datePublised ;
+             xyz:zipballUrl ?rel_zipballUrl ;
+             xyz:url ?rel_url ;
+        }
+
+    BIND(uri(concat("https://www.w3id.org/okn/i/Agent/",encode_for_uri(?rel_authorName))) as ?rel_authorName_uri)
+    BIND(uri(concat("https://www.w3id.org/okn/i/SoftwareVersion/",encode_for_uri(?owner),"/",encode_for_uri(?name),"/",encode_for_uri(?rel_tagName))) as ?rel_subject)
+
+    }
 
 
   }
-  WHERE
-    { SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.owner>
-        {
-          []  xyz:excerpt ?owner ;
-              xyz:confidence [ fx:anySlot ?owner_confidence ] ;
-              xyz:technique ?owner_technique .
-        }
-
-    BIND(uri(concat("https://www.w3id.org/okn/i/Agent/",?owner)) as ?owner_uri)
-
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.name>
-        {
-          []  xyz:excerpt ?name .
-        }
-
-    BIND(uri(concat("https://www.w3id.org/okn/i/Software/",encode_for_uri(?owner),"/",encode_for_uri(?name))) as ?subject)
-
-    BIND(uri(concat("https://www.w3id.org/okn/i/SourceCode/",encode_for_uri(?owner),"/",encode_for_uri(?name))) as ?source_subject)
-
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.citation>
-          {
-            []  xyz:excerpt ?cit_excerpt ;
-                xyz:confidence [ fx:anySlot ?cit_confidence ] ;
-                xyz:technique ?cit_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.description>
-          {
-            []  xyz:excerpt ?desc_excerpt ;
-                xyz:confidence [ fx:anySlot ?desc_confidence ] ;
-                xyz:technique ?desc_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.acknowledgement>
-          {
-            []  xyz:excerpt ?ack_excerpt ;
-                xyz:confidence [ fx:anySlot ?ack_confidence ] ;
-                xyz:technique ?ack_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.installation>
-          {
-            []  xyz:excerpt ?install_excerpt ;
-                xyz:confidence [ fx:anySlot ?install_confidence ] ;
-                xyz:technique ?install_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.run>
-          {
-            []  xyz:excerpt ?run_excerpt ;
-                xyz:confidence [ fx:anySlot ?run_confidence ] ;
-                xyz:technique ?run_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.invocation>
-          {
-            []  xyz:excerpt ?invoc_excerpt ;
-                xyz:confidence [ fx:anySlot ?invoc_confidence ] ;
-                xyz:technique ?invoc_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.usage>
-          {
-            []  xyz:excerpt ?usage_excerpt ;
-                xyz:confidence [ fx:anySlot ?usage_confidence ] ;
-                xyz:technique ?usage_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.downloadUrl>
-          {
-            []  xyz:excerpt ?downloadUrl_excerpt ;
-                xyz:confidence [ fx:anySlot ?downloadUrl_confidence ] ;
-                xyz:technique ?downloadUrl_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.requirement>
-          {
-            []  xyz:excerpt ?softReqs_excerpt ;
-                xyz:confidence [ fx:anySlot ?softReqs_confidence ] ;
-                xyz:technique ?softReqs_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.contact>
-          {
-            []  xyz:excerpt ?contact_excerpt ;
-                xyz:confidence [ fx:anySlot ?contact_confidence ] ;
-                xyz:technique ?contact_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.support>
-          {
-            []  xyz:excerpt ?support_excerpt ;
-                xyz:confidence [ fx:anySlot ?support_confidence ] ;
-                xyz:technique ?support_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.fullName>
-          {
-            []  xyz:excerpt ?fullname .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.license>
-          {
-            []  xyz:excerpt ?license_excerpt ;
-                xyz:confidence [ fx:anySlot ?license_confidence ] ;
-                xyz:technique ?license_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.licenseFile>
-          {
-            []  xyz:excerpt ?licenseFile_excerpt ;
-                xyz:confidence [ fx:anySlot ?licenseFile_confidence ] ;
-                xyz:technique ?licenseFile_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.licenseText>
-          {
-            []  xyz:excerpt ?licenseText_excerpt ;
-                xyz:confidence [ fx:anySlot ?licenseText_confidence ] ;
-                xyz:technique ?licenseText_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.faq>
-          {
-            []  xyz:excerpt ?faq_excerpt ;
-                xyz:confidence [ fx:anySlot ?faq_confidence ] ;
-                xyz:technique ?faq_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.executableExample>
-          {
-            []  xyz:excerpt ?execex_excerpt ;
-                xyz:confidence [ fx:anySlot ?execex_confidence ] ;
-                xyz:technique ?execex_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.executableNotebook>
-          {
-            []  xyz:excerpt ?execnote_excerpt ;
-                xyz:confidence [ fx:anySlot ?execnote_confidence ] ;
-                xyz:technique ?execnote_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.codeOfConduct>
-          {
-            []  xyz:excerpt ?codeConduct_excerpt ;
-                xyz:confidence [ fx:anySlot ?codeConduct_confidence ] ;
-                xyz:technique ?codeConduct_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.dateCreated>
-          {
-            []  xyz:excerpt ?dateCreated_excerpt ;
-                xyz:confidence [ fx:anySlot ?dateCreated_confidence ] ;
-                xyz:technique ?dateCreated_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.dateModified>
-          {
-            []  xyz:excerpt ?dateModified_excerpt ;
-                xyz:confidence [ fx:anySlot ?dateModified_confidence ] ;
-                xyz:technique ?dateModified_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.hasDocumentation>
-          {
-            []  xyz:excerpt ?hasDocumentation_excerpt ;
-                xyz:confidence [ fx:anySlot ?hasDocumentation_confidence ] ;
-                xyz:technique ?hasDocumentation_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.hasBuildFile>
-          {
-            []  xyz:excerpt ?hasBuildFile_excerpt ;
-                xyz:confidence [ fx:anySlot ?hasBuildFile_confidence ] ;
-                xyz:technique ?hasBuildFile_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.identifier>
-          {
-            []  xyz:excerpt ?id_excerpt ;
-                xyz:confidence [ fx:anySlot ?id_confidence ] ;
-                xyz:technique ?id_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.issueTracker>
-          {
-            []  xyz:excerpt ?issueTracker_excerpt ;
-                xyz:confidence [ fx:anySlot ?issueTracker_confidence ] ;
-                xyz:technique ?issueTracker_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.long_title>
-          {
-            []  xyz:excerpt ?long_title_excerpt ;
-                xyz:confidence [ fx:anySlot ?long_title_confidence ] ;
-                xyz:technique ?long_title_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.readmeUrl>
-          {
-            []  xyz:excerpt ?readmeUrl_excerpt ;
-                xyz:confidence [ fx:anySlot ?readmeUrl_confidence ] ;
-                xyz:technique ?readmeUrl_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.contributingGuidelines>
-          {
-            []  xyz:excerpt ?contrib_excerpt ;
-                xyz:confidence [ fx:anySlot ?contrib_confidence ] ;
-                xyz:technique ?contrib_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.invocation>
-          {
-            []  xyz:excerpt ?invocation_excerpt ;
-                xyz:confidence [ fx:anySlot ?invocation_confidence ] ;
-                xyz:technique ?invocation_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.support_channel>
-          {
-            []  xyz:excerpt ?channel_excerpt ;
-                xyz:confidence [ fx:anySlot ?channel_confidence ] ;
-                xyz:technique ?channel_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.logo>
-          {
-            []  xyz:excerpt ?logo_excerpt ;
-                xyz:confidence [ fx:anySlot ?logo_confidence ] ;
-                xyz:technique ?logo_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.image>
-          {
-            []  xyz:excerpt ?image_excerpt ;
-                xyz:confidence [ fx:anySlot ?image_confidence ] ;
-                xyz:technique ?image_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.codeRepository>
-          {
-            []  xyz:excerpt ?code_repo .
-          }
-      }
-    BIND(uri(?code_repo) as ?code_repo_uri)
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.languages>
-          {
-            []  xyz:excerpt [ fx:anySlot ?languages_excerpt ] ;
-                xyz:confidence [ fx:anySlot ?languages_confidence ] ;
-                xyz:technique ?languages_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.topics>
-          {
-            []  xyz:excerpt ?keywords_excerpt ;
-                xyz:confidence [ fx:anySlot ?keywords_confidence ] ;
-                xyz:technique ?keywords_technique .
-          }
-      }
-
-    OPTIONAL
-      {
-      SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_morph-kgc.json,json.path=$.releases.excerpt>
-          {
-            [] xyz:tagName ?rel_tagName ;
-               xyz:name ?rel_name ;
-               xyz:authorName ?rel_authorName ;
-               xyz:body ?rel_body ;
-               xyz:dateCreated ?rel_dateCreated ;
-               xyz:datePublishec ?rel_datePublised ;
-               xyz:zipballUrl ?rel_zipballUrl ;
-               xyz:url ?rel_url ;
-          }
-
-      BIND(uri(concat("https://www.w3id.org/okn/i/Agent/",encode_for_uri(?rel_authorName))) as ?rel_authorName_uri)
-      BIND(uri(concat("https://www.w3id.org/okn/i/SoftwareVersion/",encode_for_uri(?owner),"/",encode_for_uri(?name),"/",encode_for_uri(?rel_tagName))) as ?rel_subject)
-
-      }
-
-
-    }

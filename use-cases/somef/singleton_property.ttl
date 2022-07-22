@@ -696,24 +696,24 @@
     rml:subjectMap :soft;
     rr:predicateObjectMap [
         rr:predicateMap [
-            rr:template "https://w3id.org/okn/o/sd#hasLongName_{owner.excerpt}-{name.excerpt}-{long_title.technique}" ;
+            rr:template "https://w3id.org/okn/o/sd#hasLongName_{owner.excerpt}-{name.excerpt}-{longTitle.technique}" ;
         ];
         rml:objectMap [
-            rml:reference "long_title.excerpt" ;
+            rml:reference "longTitle.excerpt" ;
             rr:termType rr:Literal
         ]
     ].
 
 :longNameMetadataTM rml:logicalSource :ls ;
-  rml:subjectMap [ rr:template "https://w3id.org/okn/o/sd#hasLongName_{owner.excerpt}-{name.excerpt}-{long_title.technique}" ] ;
+  rml:subjectMap [ rr:template "https://w3id.org/okn/o/sd#hasLongName_{owner.excerpt}-{name.excerpt}-{longTitle.technique}" ] ;
   rr:predicateObjectMap [
     rr:predicate em:confidence ;
     rml:objectMap [
-      rml:reference "long_title.confidence"] ] ;
+      rml:reference "longTitle.confidence"] ] ;
   rr:predicateObjectMap [
     rr:predicate em:technique ;
     rml:objectMap [
-      rml:reference "long_title.technique"] ] ;
+      rml:reference "longTitle.technique"] ] ;
   rr:predicateObjectMap [
     rr:predicate rdf:singletonPropertyOf ;
     rml:objectMap [ rr:constant sd:hasLongName ; ] ] .

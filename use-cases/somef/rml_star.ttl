@@ -572,7 +572,7 @@
     rr:predicateObjectMap [
         rr:predicate sd:hasLongName ;
         rml:objectMap [
-            rml:reference "long_title.excerpt" ;
+            rml:reference "longTitle.excerpt" ;
             rr:termType rr:Literal
         ]
     ].
@@ -582,11 +582,11 @@
   rr:predicateObjectMap [
     rr:predicate em:confidence ;
     rml:objectMap [
-      rml:reference "long_title.confidence"] ] ;
+      rml:reference "longTitle.confidence"] ] ;
   rr:predicateObjectMap [
     rr:predicate em:technique ;
     rml:objectMap [
-      rml:reference "long_title.technique"] ] .
+      rml:reference "longTitle.technique"] ] .
 
 
 :readmeTM rml:logicalSource :ls;

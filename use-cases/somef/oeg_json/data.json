@@ -511,5 +511,78 @@
     },
     "inspect4py": {
         "software_type": "service"
+    },
+    "releases": {
+        "excerpt": [
+            {
+                "tagName": "v1.5.3",
+                "name": "v1.5.3",
+                "authorName": "anaigmo",
+                "authorType": "User",
+                "body": "Quotes in constant predicates are fixed",
+                "tarballUrl": "https://api.github.com/repos/oeg-upm/mapeathor/tarball/v1.5.3",
+                "zipballUrl": "https://api.github.com/repos/oeg-upm/mapeathor/zipball/v1.5.3",
+                "htmlUrl": "https://github.com/oeg-upm/mapeathor/releases/tag/v1.5.3",
+                "url": "https://api.github.com/repos/oeg-upm/mapeathor/releases/59133274",
+                "dateCreated": "2022-02-09T15:01:28Z",
+                "datePublished": "2022-02-09T15:02:57Z"
+            },
+            {
+                "tagName": "v1.5.2",
+                "name": "v1.5.2",
+                "authorName": "anaigmo",
+                "authorType": "User",
+                "body": "Support to blank nodes in subjects added",
+                "tarballUrl": "https://api.github.com/repos/oeg-upm/mapeathor/tarball/v1.5.2",
+                "zipballUrl": "https://api.github.com/repos/oeg-upm/mapeathor/zipball/v1.5.2",
+                "htmlUrl": "https://github.com/oeg-upm/mapeathor/releases/tag/v1.5.2",
+                "url": "https://api.github.com/repos/oeg-upm/mapeathor/releases/58703250",
+                "dateCreated": "2022-02-04T16:19:37Z",
+                "datePublished": "2022-02-04T16:22:39Z"
+            },
+            {
+                "tagName": "v1.5.1",
+                "name": "v1.5.1",
+                "authorName": "anaigmo",
+                "authorType": "User",
+                "body": "Test versioning",
+                "tarballUrl": "https://api.github.com/repos/oeg-upm/mapeathor/tarball/v1.5.1",
+                "zipballUrl": "https://api.github.com/repos/oeg-upm/mapeathor/zipball/v1.5.1",
+                "htmlUrl": "https://github.com/oeg-upm/mapeathor/releases/tag/v1.5.1",
+                "url": "https://api.github.com/repos/oeg-upm/mapeathor/releases/58509092",
+                "dateCreated": "2022-02-02T12:06:41Z",
+                "datePublished": "2022-02-02T12:07:46Z"
+            },
+            {
+                "tagName": "v1.5.0",
+                "name": "v1.5.0",
+                "authorName": "anaigmo",
+                "authorType": "User",
+                "body": "This release incorporates the changes done over the last two years, including bugs, enhancements, source code modularization and a reorganization of the package content.",
+                "tarballUrl": "https://api.github.com/repos/oeg-upm/mapeathor/tarball/v1.5.0",
+                "zipballUrl": "https://api.github.com/repos/oeg-upm/mapeathor/zipball/v1.5.0",
+                "htmlUrl": "https://github.com/oeg-upm/mapeathor/releases/tag/v1.5.0",
+                "url": "https://api.github.com/repos/oeg-upm/mapeathor/releases/58504800",
+                "dateCreated": "2022-02-02T10:54:05Z",
+                "datePublished": "2022-02-02T11:02:32Z"
+            },
+            {
+                "tagName": "v1.0",
+                "name": "First template",
+                "authorName": "anaigmo",
+                "authorType": "User",
+                "body": "",
+                "tarballUrl": "https://api.github.com/repos/oeg-upm/mapeathor/tarball/v1.0",
+                "zipballUrl": "https://api.github.com/repos/oeg-upm/mapeathor/zipball/v1.0",
+                "htmlUrl": "https://github.com/oeg-upm/mapeathor/releases/tag/v1.0",
+                "url": "https://api.github.com/repos/oeg-upm/mapeathor/releases/21580066",
+                "dateCreated": "2019-11-08T15:24:55Z",
+                "datePublished": "2019-11-19T10:26:47Z"
+            }
+        ],
+        "confidence": [
+            1.0
+        ],
+        "technique": "GitHub API"
     }
 }]
