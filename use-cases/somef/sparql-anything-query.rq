@@ -548,7 +548,7 @@ WHERE
              xyz:authorName ?rel_authorName ;
              xyz:body ?rel_body ;
              xyz:dateCreated ?rel_dateCreated ;
-             xyz:datePublishec ?rel_datePublised ;
+             xyz:datePublished ?rel_datePublised ;
              xyz:zipballUrl ?rel_zipballUrl ;
              xyz:url ?rel_url ;
         }
