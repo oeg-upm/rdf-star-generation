@@ -13,7 +13,7 @@
 :ls a rml:LogicalSource ;
   rml:source "./data/somef/morph.json";
   rml:referenceFormulation ql:JSONPath ;
-  rml:iterator "$" .
+  rml:iterator "$.*" .
 
 :soft rr:template "https://www.w3id.org/okn/i/Software/{owner.excerpt}/{name.excerpt}" ;
    rr:class sd:Software.
