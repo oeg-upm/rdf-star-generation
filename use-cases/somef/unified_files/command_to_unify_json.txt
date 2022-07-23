@@ -1,0 +1,2 @@
+jq -s 'flatten' oeg_json/*.json > merged_json.json
+
