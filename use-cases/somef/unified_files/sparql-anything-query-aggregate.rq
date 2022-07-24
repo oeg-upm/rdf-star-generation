@@ -173,7 +173,7 @@ CONSTRUCT {
 
 }
 WHERE
-  { SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/data.json>
+  { SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/unified_files/merged_json.json>
       {
 
         [] xyz:owner ?owner_node ;
