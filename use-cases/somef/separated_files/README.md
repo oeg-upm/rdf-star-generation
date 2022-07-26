@@ -8,3 +8,4 @@ This folder contains:
 - Results (result.nt) containing the results of transforming the input into RDF-star
 - A zip file (oeg_json.zip) with 237 JSON files obtained after applying SOMEF to the oeg-upm GitHub organization
 - A folder with the zip uncompressed (oeg_json)
+- A folder with the JSON files in oeg_json flattening JSON files with double lists (an error currently being fixed in SOMEF)
