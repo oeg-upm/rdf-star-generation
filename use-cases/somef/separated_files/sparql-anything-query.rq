@@ -28,6 +28,7 @@ CONSTRUCT {
     ?subject a sd:Software ;
         sd:description ?desc_excerpt ;
         sd:citation ?cit_excerpt ;
+        sd:hasSupportScriptLocation ?script_excerpt ;
         sd:hasAcknowledgments ?ack_excerpt ;
         sd:hasInstallationInstructions ?install_excerpt ;
         sd:hasExecutionCommand ?run_excerpt ;
@@ -69,6 +70,9 @@ CONSTRUCT {
 
     << ?subject sd:citation ?cit_excerpt >> em:technique ?cit_technique ;
         em:confidence ?cit_confidence .
+
+    << ?subject sd:hasSupportScriptLocation ?script_excerpt >> em:technique ?script_technique ;
+        em:confidence ?script_confidence .
 
     << ?subject sd:hasAcknowledgments ?ack_excerpt >> em:technique ?ack_technique ;
         em:confidence ?ack_confidence .
@@ -199,6 +203,16 @@ WHERE
           []  xyz:excerpt ?cit_excerpt ;
               xyz:confidence [ fx:anySlot ?cit_confidence ] ;
               xyz:technique ?cit_technique .
+        }
+    }
+
+  OPTIONAL
+    {
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/oeg_json/oeg-upm_wot-jtd.json,json.path=$.hasScriptFile>
+        {
+          []  xyz:excerpt [ fx:anySlot ?script_excerpt ] ;
+              xyz:confidence [ fx:anySlot ?script_confidence ] ;
+              xyz:technique ?script_technique .
         }
     }
 
