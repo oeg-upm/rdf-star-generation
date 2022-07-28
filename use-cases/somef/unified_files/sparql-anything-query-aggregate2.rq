@@ -367,7 +367,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/unified_files/merged_json.json,json.path=$.*.executableExample>
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/unified_files/merged_json.json,json.path=$.*.hasExecutableExample>
         {
           []  xyz:excerpt ?execex_excerpt ;
               xyz:confidence [ fx:anySlot ?execex_confidence ] ;
@@ -377,7 +377,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/unified_files/merged_json.json,json.path=$.*.executableNotebook>
+    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/unified_files/merged_json.json,json.path=$.*.hasExecutableNotebook>
         {
           []  xyz:excerpt ?execnote_excerpt ;
               xyz:confidence [ fx:anySlot ?execnote_confidence ] ;
