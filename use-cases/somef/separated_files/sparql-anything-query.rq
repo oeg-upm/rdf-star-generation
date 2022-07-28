@@ -178,7 +178,7 @@ CONSTRUCT {
 
 }
 WHERE
-  { SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.owner>
+  { SERVICE <x-sparql-anything:location=./data.json,json.path=$.owner>
       {
         []  xyz:excerpt ?owner ;
             xyz:confidence [ fx:anySlot ?owner_confidence ] ;
@@ -187,7 +187,7 @@ WHERE
 
   BIND(uri(concat("https://www.w3id.org/okn/i/Agent/",?owner)) as ?owner_uri)
 
-  SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.name>
+  SERVICE <x-sparql-anything:location=./data.json,json.path=$.name>
       {
         []  xyz:excerpt ?name .
       }
@@ -199,7 +199,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.citation>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.citation>
         {
           []  xyz:excerpt ?cit_excerpt ;
               xyz:confidence [ fx:anySlot ?cit_confidence ] ;
@@ -209,7 +209,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.hasScriptFile>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.hasScriptFile>
         {
           []  xyz:excerpt [ fx:anySlot ?script_excerpt ] ;
               xyz:confidence [ fx:anySlot ?script_confidence ] ;
@@ -219,7 +219,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.description>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.description>
         {
           []  xyz:excerpt ?desc_excerpt ;
               xyz:confidence [ fx:anySlot ?desc_confidence ] ;
@@ -229,7 +229,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.acknowledgement>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.acknowledgement>
         {
           []  xyz:excerpt ?ack_excerpt ;
               xyz:confidence [ fx:anySlot ?ack_confidence ] ;
@@ -239,7 +239,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.installation>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.installation>
         {
           []  xyz:excerpt ?install_excerpt ;
               xyz:confidence [ fx:anySlot ?install_confidence ] ;
@@ -249,7 +249,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.run>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.run>
         {
           []  xyz:excerpt ?run_excerpt ;
               xyz:confidence [ fx:anySlot ?run_confidence ] ;
@@ -259,7 +259,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.invocation>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.invocation>
         {
           []  xyz:excerpt ?invoc_excerpt ;
               xyz:confidence [ fx:anySlot ?invoc_confidence ] ;
@@ -269,7 +269,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.usage>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.usage>
         {
           []  xyz:excerpt ?usage_excerpt ;
               xyz:confidence [ fx:anySlot ?usage_confidence ] ;
@@ -279,7 +279,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.downloadUrl>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.downloadUrl>
         {
           []  xyz:excerpt ?downloadUrl_excerpt ;
               xyz:confidence [ fx:anySlot ?downloadUrl_confidence ] ;
@@ -289,7 +289,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.requirement>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.requirement>
         {
           []  xyz:excerpt ?softReqs_excerpt ;
               xyz:confidence [ fx:anySlot ?softReqs_confidence ] ;
@@ -299,7 +299,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.contact>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.contact>
         {
           []  xyz:excerpt ?contact_excerpt ;
               xyz:confidence [ fx:anySlot ?contact_confidence ] ;
@@ -309,7 +309,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.support>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.support>
         {
           []  xyz:excerpt ?support_excerpt ;
               xyz:confidence [ fx:anySlot ?support_confidence ] ;
@@ -319,7 +319,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.fullName>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.fullName>
         {
           []  xyz:excerpt ?fullname .
         }
@@ -327,7 +327,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.license>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.license>
         {
           []  xyz:excerpt [ xyz:url ?license_excerpt ] ;
               xyz:confidence [ fx:anySlot ?license_confidence ] ;
@@ -337,7 +337,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.licenseFile>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.licenseFile>
         {
           []  xyz:excerpt ?licenseFile_excerpt ;
               xyz:confidence [ fx:anySlot ?licenseFile_confidence ] ;
@@ -347,7 +347,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.licenseText>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.licenseText>
         {
           []  xyz:excerpt ?licenseText_excerpt ;
               xyz:confidence [ fx:anySlot ?licenseText_confidence ] ;
@@ -357,7 +357,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.faq>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.faq>
         {
           []  xyz:excerpt ?faq_excerpt ;
               xyz:confidence [ fx:anySlot ?faq_confidence ] ;
@@ -367,7 +367,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.hasExecutableExample>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.hasExecutableExample>
         {
           []  xyz:excerpt ?execex_excerpt ;
               xyz:confidence [ fx:anySlot ?execex_confidence ] ;
@@ -377,7 +377,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.hasExecutableNotebook>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.hasExecutableNotebook>
         {
           []  xyz:excerpt ?execnote_excerpt ;
               xyz:confidence [ fx:anySlot ?execnote_confidence ] ;
@@ -387,7 +387,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.codeOfConduct>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.codeOfConduct>
         {
           []  xyz:excerpt ?codeConduct_excerpt ;
               xyz:confidence [ fx:anySlot ?codeConduct_confidence ] ;
@@ -397,7 +397,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.dateCreated>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.dateCreated>
         {
           []  xyz:excerpt ?dateCreated_excerpt ;
               xyz:confidence [ fx:anySlot ?dateCreated_confidence ] ;
@@ -407,7 +407,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.dateModified>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.dateModified>
         {
           []  xyz:excerpt ?dateModified_excerpt ;
               xyz:confidence [ fx:anySlot ?dateModified_confidence ] ;
@@ -417,7 +417,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.hasDocumentation>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.hasDocumentation>
         {
           []  xyz:excerpt [ fx:anySlot ?hasDocumentation_excerpt ] ;
               xyz:confidence [ fx:anySlot ?hasDocumentation_confidence ] ;
@@ -427,7 +427,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.hasBuildFile>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.hasBuildFile>
         {
           []  xyz:excerpt [ fx:anySlot ?hasBuildFile_excerpt ] ;
               xyz:confidence [ fx:anySlot ?hasBuildFile_confidence ] ;
@@ -437,7 +437,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.identifier>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.identifier>
         {
           []  xyz:excerpt ?id_excerpt ;
               xyz:confidence [ fx:anySlot ?id_confidence ] ;
@@ -447,7 +447,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.issueTracker>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.issueTracker>
         {
           []  xyz:excerpt ?issueTracker_excerpt ;
               xyz:confidence [ fx:anySlot ?issueTracker_confidence ] ;
@@ -457,7 +457,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.longTitle>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.longTitle>
         {
           []  xyz:excerpt ?long_title_excerpt ;
               xyz:confidence [ fx:anySlot ?long_title_confidence ] ;
@@ -467,7 +467,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.readmeUrl>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.readmeUrl>
         {
           []  xyz:excerpt ?readmeUrl_excerpt ;
               xyz:confidence [ fx:anySlot ?readmeUrl_confidence ] ;
@@ -477,7 +477,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.contributingGuidelines>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.contributingGuidelines>
         {
           []  xyz:excerpt ?contrib_excerpt ;
               xyz:confidence [ fx:anySlot ?contrib_confidence ] ;
@@ -487,7 +487,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.invocation>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.invocation>
         {
           []  xyz:excerpt ?invocation_excerpt ;
               xyz:confidence [ fx:anySlot ?invocation_confidence ] ;
@@ -497,7 +497,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.support_channel>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.support_channel>
         {
           []  xyz:excerpt ?channel_excerpt ;
               xyz:confidence [ fx:anySlot ?channel_confidence ] ;
@@ -507,7 +507,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.logo>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.logo>
         {
           []  xyz:excerpt ?logo_excerpt ;
               xyz:confidence [ fx:anySlot ?logo_confidence ] ;
@@ -517,7 +517,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.image>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.image>
         {
           []  xyz:excerpt ?image_excerpt ;
               xyz:confidence [ fx:anySlot ?image_confidence ] ;
@@ -527,7 +527,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.codeRepository>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.codeRepository>
         {
           []  xyz:excerpt ?code_repo .
         }
@@ -536,7 +536,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.languages>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.languages>
         {
           []  xyz:excerpt [ fx:anySlot ?languages_excerpt ] ;
               xyz:confidence [ fx:anySlot ?languages_confidence ] ;
@@ -546,7 +546,7 @@ WHERE
 
   OPTIONAL
     {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json,json.path=$.topics>
+    SERVICE <x-sparql-anything:location=./data.json,json.path=$.topics>
         {
           []  xyz:excerpt [ fx:anySlot ?keywords_excerpt ] ;
               xyz:confidence [ fx:anySlot ?keywords_confidence ] ;
@@ -558,7 +558,7 @@ WHERE
       {
       SERVICE <x-sparql-anything:>
           { fx:properties
-                      fx:location  "https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/separated_files/sample_input_one_repo.json" .
+                      fx:location  "./data.json" .
             ?s        xyz:owner    ?owner_node .
             ?owner_node    xyz:excerpt  ?o_excerpt .
             ?s xyz:name/xyz:excerpt ?name_excerpt .
