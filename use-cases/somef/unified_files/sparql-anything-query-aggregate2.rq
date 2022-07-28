@@ -3,6 +3,7 @@ PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
 PREFIX  fx:   <http://sparql.xyz/facade-x/ns/>
 PREFIX  ex:   <http://example.org/>
 PREFIX  xsd:  <http://www.w3.org/2001/XMLSchema#>
+PREFIX  i:    <https://www.w3id.org/okn/i/>
 PREFIX  sd:   <https://w3id.org/okn/o/sd#>
 PREFIX  em:   <https://www.w3id.org/okn/o/em#>
 PREFIX  rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -553,24 +554,26 @@ WHERE
         }
     }
 
-  OPTIONAL
-    {
-    SERVICE <x-sparql-anything:https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/unified_files/merged_json.json,json.path=$.*.releases.excerpt>
-        {
-          [] xyz:tagName ?rel_tagName ;
-             xyz:name ?rel_name ;
-             xyz:authorName ?rel_authorName ;
-             xyz:body ?rel_body ;
-             xyz:dateCreated ?rel_dateCreated ;
-             xyz:datePublished ?rel_datePublised ;
-             xyz:zipballUrl ?rel_zipballUrl ;
-             xyz:url ?rel_url ;
+    OPTIONAL
+      {
+      SERVICE <x-sparql-anything:>
+          { fx:properties
+                      fx:location  "https://raw.githubusercontent.com/oeg-upm/rdf-star-generation/main/use-cases/somef/unified_files/merged_json.json" .
+            ?s        xyz:owner    ?owner_node .
+            ?owner_node    xyz:excerpt  ?o_excerpt .
+            ?s xyz:name/xyz:excerpt ?name_excerpt .
+            ?s xyz:releases/xyz:excerpt/fx:anySlot ?release .
+            ?release  xyz:tagName        ?rel_tagName ;
+                      xyz:name           ?rel_name ;
+                      xyz:authorName     ?rel_authorName ;
+                      xyz:body           ?rel_body ;
+                      xyz:dateCreated    ?rel_dateCreated ;
+                      xyz:datePublished  ?rel_datePublised ;
+                      xyz:zipballUrl     ?rel_zipballUrl ;
+                      xyz:url            ?rel_url .
+
+            BIND(uri(concat(str(i:), "Agent/", encode_for_uri(?rel_authorName))) AS ?rel_authorName_uri)
+            BIND(uri(concat(str(i:), "SoftwareVersion/", encode_for_uri(?o_excerpt), "/", encode_for_uri(?name_excerpt), "/", encode_for_uri(?rel_tagName))) AS ?rel_subject)
+          }
         }
-
-    BIND(uri(concat("https://www.w3id.org/okn/i/Agent/",encode_for_uri(?rel_authorName))) as ?rel_authorName_uri)
-    BIND(uri(concat("https://www.w3id.org/okn/i/SoftwareVersion/",encode_for_uri(?owner),"/",encode_for_uri(?name),"/",encode_for_uri(?rel_tagName))) as ?rel_subject)
-
     }
-
-
-  }
