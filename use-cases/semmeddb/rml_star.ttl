@@ -21,7 +21,7 @@
         rml:objectMap [
             rr:template "http://semmeddb.com/subject-predication/{SUBJECT_NAME}";
             rr:termType rr:IRI;
-        ] 
+        ]
     ] .
 
 :predicationObject a rr:TriplesMap ;
@@ -37,16 +37,16 @@
         rml:objectMap [
             rr:template "http://semmeddb.com/object-predication/{OBJECT_NAME}";
             rr:termType rr:IRI;
-        ] 
+        ]
     ]
-. 
+.
 
-:subject a rr:TriplesMap, rml:NonAssertedTriplesMap ;
+:subject a rr:TriplesMap ;
     rr:logicalTable [
         rr:tableName "PREDICATION"
     ];
     rml:subjectMap [
-        rr:template "http://semmeddb.com/subject-predication/{SUBJECT_NAME}" 
+        rr:template "http://semmeddb.com/subject-predication/{SUBJECT_NAME}"
     ];
 
     rr:predicateObjectMap [
@@ -56,12 +56,12 @@
         ]
     ] .
 
-:object a rr:TriplesMap,rml:NonAssertedTriplesMap ;
+:object a rr:TriplesMap ;
     rr:logicalTable [
         rr:tableName "PREDICATION"
     ];
     rml:subjectMap [
-        rr:template "http://semmeddb.com/object-predication/{OBJECT_NAME}" 
+        rr:template "http://semmeddb.com/object-predication/{OBJECT_NAME}"
     ];
 
     rr:predicateObjectMap [
@@ -145,7 +145,7 @@
         ]
     ] .
 
-:entity a rr:TriplesMap, rml:NonAssertedTriplesMap ;
+:entity a rr:TriplesMap ;
     rr:logicalTable [
         rr:tableName "ENTITY"
     ];
